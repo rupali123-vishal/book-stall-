@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guess Number Game</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:linear-gradient(135deg,#4facfe,#00f2fe);
+    }
+
+    .game-box{
+      background:white;
+      padding:30px;
+      width:350px;
+      border-radius:15px;
+      text-align:center;
+      box-shadow:0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    h1{
+      margin-bottom:15px;
+      color:#333;
+    }
+
+    p{
+      margin-bottom:15px;
+      color:#555;
+    }
+
+    input{
+      width:100%;
+      padding:12px;
+      border:1px solid #ccc;
+      border-radius:8px;
+      margin-bottom:15px;
+      font-size:16px;
+    }
+
+    button{
+      width:100%;
+      padding:12px;
+      border:none;
+      background:#4facfe;
+      color:white;
+      font-size:16px;
+      border-radius:8px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    button:hover{
+      background:#008cff;
+    }
+
+    #message{
+      margin-top:15px;
+      font-weight:bold;
+      color:#222;
+    }
+
+    @media(max-width:400px){
+      .game-box{
+        width:90%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="game-box">
+    <h1>Guess Number Game</h1>
+
+    <p>Guess a number between 1 to 10</p>
+
+    <input type="number" id="guess" placeholder="Enter number">
+
+    <button onclick="checkGuess()">Check</button>
+
+    <p id="message"></p>
+  </div>
+
+  <script>
+    let randomNumber = Math.floor(Math.random() * 10) + 1;
+
+    function checkGuess() {
+
+      let userGuess = document.getElementById("guess").value;
+      let message = document.getElementById("message");
+
+      if(userGuess == randomNumber){
+        message.innerHTML = "🎉 Correct! You Win!";
+        message.style.color = "green";
+      }
+      else if(userGuess > randomNumber){
+        message.innerHTML = "📈 Too High!";
+        message.style.color = "red";
+      }
+      else{
+        message.innerHTML = "📉 Too Low!";
+        message.style.color = "orange";
+      }
+    }
+  </script>
+
+</body>
+</html>
